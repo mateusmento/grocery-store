@@ -11,10 +11,17 @@ use shop;
 create table users (
     id bigint not null auto_increment,
     name varchar(64) not null,
-    username varchar(64) not null,
-    password varchar(64) not null,
     email varchar(64) not null,
     primary key(id),
+);
+
+create table credentials (
+    id bigint not null auto_increment,
+    username varchar(64) not null,
+    password varchar(64) not null,
+    user_id bigint not null,
+    primary key(id),
+    foreign key(user_id) references users(id) 
     unique key(username)
 );
 
